@@ -22,7 +22,7 @@ author:
 title: Maria Adshead
 email: maria.adshead1@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
-  Hosted on GitHub pages
+  Hosted on GitHub Pages
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 linkedin_username: mariaadshead
