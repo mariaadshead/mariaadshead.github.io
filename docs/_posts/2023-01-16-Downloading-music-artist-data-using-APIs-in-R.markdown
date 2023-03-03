@@ -528,6 +528,9 @@ for (i in 1:nrow(lyrics_corpus_cleaned)){
                             rotation = 0, min_size = .75, max_size = 3, max_words = 50))
   print(mtext(docnames(lyrics_corpus_cleaned[i,])))
 }
+
+#Disconnect from the database
+dbDisconnect(db)
 {% endhighlight %}
 
 The code above creates a wordcloud for each release, but since some of the releases in this case are live albums and demos, some patters are repeating. For this reason, I am going to show wordclouds for only some of the albums, which will be shown below.
