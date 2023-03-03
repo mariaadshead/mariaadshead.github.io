@@ -164,7 +164,7 @@ dbGetQuery(db, "SELECT CAST(100/(COUNT(*) / (SELECT COUNT(*) FROM tweets t
 #Output: 5%
 {% endhighlight %}
 
-Further on, our analysis is going to be more focused on the content of the tweets, and we will not be using SQL anymore. In the next chunk of code I create a 
+Further on, our analysis is going to go deeper into hashtags, their relationship between each other and other words. In the next chunk of code I create a 
 function that makes use of the quanteda.textplots package by returning a visualization for the word network of a given hashtag.
 
 Then I am going to select some hashtags that form networks that appears to be interesting or informative and provide illustrations for these networks.
@@ -211,6 +211,5 @@ Network for hashtag "tories"
 Finally, we need to disconnect from the database.
 
 {% highlight ruby %}
-#Disconnect from the database
 dbDisconnect(db)
 {% endhighlight %}
