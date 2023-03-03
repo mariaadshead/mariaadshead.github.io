@@ -5,4 +5,4 @@ date: 2021-04-29 12:00:00 -0000
 categories: R music econometrics LaTeX
 ---
 
-<object data="{{ post./assets/econometrics_essay.pdf }}" width="1000" height="1000" type='application/pdf'/></object>
+ {% pdf "/assets/econometrics_essay.pdf" %}
