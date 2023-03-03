@@ -127,7 +127,7 @@ dbGetQuery(db, 'SELECT text, MAX(created_at)
            FROM tweets')
 
 #Output: Wed May 31 21:00:00 +0000 2017
-{% endhighliht %}
+{% endhighlight %}
 
 Next we can start analyzing the hashtags in the dataset. Let's look at the tweets that contain the word "brexit".
 
