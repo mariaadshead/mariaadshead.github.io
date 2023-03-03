@@ -2,6 +2,8 @@
 layout: post
 title: "Analyzing UK election tweets in R using RSQLite and quanteda"
 date: 2022-12-08 12:00:00 -0000
+image:
+  background: assets/aesthetic-pastel-gradient-purple-green-blue-yellow-gradient-wallpaper-illustration-perfect-backdrop-wallpaper-background-banner_565280-1128.jpg
 categories: R SQL quanteda
 ---
 This is a small project that I completed as a part of one of my masters degree courses. It uses data from the 2017 UK General Election campaign. The dataset contains 
