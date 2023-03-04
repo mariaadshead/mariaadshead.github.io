@@ -2,6 +2,7 @@
 layout: post
 title: "Downloading music artist data using APIs in R"
 date: 2023-01-16 12:00:00 -0000
+font: "Permanent Marker"
 categories: R API music
 ---
 Below I present a project that I created as a part of the final assignment for one of my masters courses. In this project, I download data on releases for a given artist that contains titles, dates of releases, audio characteristics of tracks and lyrics using APIs, organize it into a database using SQL, and then create visualizations based on it with ggplot. In this post I will show the code that was used for this project and provide explanations. Access tokens and keys used for APIs are not shown for privacy reasons.
