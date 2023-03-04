@@ -4,7 +4,7 @@ title: "Analyzing UK election tweets in R using RSQLite and quanteda"
 date: 2022-12-08 12:00:00 -0000
 categories: R SQL quanteda
 ---
-<span style="font-family:Permanent Marker; font-size:4em;">This is a small project that I completed as a part of one of my masters degree courses. It uses data from the 2017 UK General Election campaign. The dataset contains tweets posted by candidates and political parties, and replied to those tweets.</span>
+<span style="font-family:Permanent Marker;">This is a small project that I completed as a part of one of my masters degree courses. It uses data from the 2017 UK General Election campaign. The dataset contains tweets posted by candidates and political parties, and replied to those tweets.</span>
 
 First, load the necessary libraries.
 
