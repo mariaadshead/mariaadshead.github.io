@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Analyzing UK election tweets in R using RSQLite and quanteda"
+title: "<span style="font-family:Permanent Marker;">Analyzing UK election tweets in R using RSQLite and quanteda</span>"
 date: 2022-12-08 12:00:00 -0000
 categories: R SQL quanteda
 ---
