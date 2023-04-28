@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Downloading music artist data using APIs in R"
+title: "Downloading music artist data using APIs and analyzing audio characteristics in R"
 date: 2023-01-16 12:00:00 -0000
 font: "Permanent Marker"
 categories: R API music
