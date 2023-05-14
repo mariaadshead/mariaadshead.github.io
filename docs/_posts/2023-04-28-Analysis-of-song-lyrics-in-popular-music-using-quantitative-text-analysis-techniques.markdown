@@ -187,19 +187,19 @@ print(k_search_output)
 To choose an optimal value of K, a balance needs to be reached between semantic coherence and exclusivity: both need to be maximized, however as K increases, the two metrics change in opposite directions. As we may see, the highest semantic coherence is achieved for K = 2, while highest exclusivity - for K = 10.
 As for the optimal K, I am inclined to choose between K = 4 and K = 5. Semantic coherence scores of - 50.4547 and -54.92121 are slightly worse than for K = 2, however they are significantly better than for higher values of K. Meanwhile, exclusivity scores of 8.253031 and 8.517537 are a noticeable improvement over the ones for lower values of K. To make the final choice, let us fit models for these values and see for which one the topics make more sense.
 
-<h5><strong>Wordcloud for Topic 1</strong></h5>
+<h4><strong>Wordcloud for Topic 1</strong></h4>
 <img src="/assets/topic1.png" width = "350" height = "250" alt="">
 
-<h5><strong>Wordcloud for Topic 2</strong></h5>
+<h4><strong>Wordcloud for Topic 2</strong></h4>
 <img src="/assets/topic2.png" width = "350" height = "250" alt="">
 
-<h5><strong>Wordcloud for Topic 3</strong></h5>
+<h4><strong>Wordcloud for Topic 3</strong></h4>
 <img src="/assets/topic3.png" width = "350" height = "250" alt="">
 
-<h5><strong>Wordcloud for Topic 4</strong></h5>
+<h4><strong>Wordcloud for Topic 4</strong></h4>
 <img src="/assets/topic4.png" width = "350" height = "250" alt="">
 
-<h5><strong>Wordcloud for Topic 5</strong></h5>
+<h4><strong>Wordcloud for Topic 5</strong></h4>
 <img src="/assets/topic5.png" width = "350" height = "250" alt="">
 
 There is a lot of overlap in topics in both models, however it seems that the identified topics in the model with K = 5 make slightly more sense, so I decided to stick with it. I believe the topics could be characterized as follows:
@@ -261,10 +261,10 @@ Unfortunately, the plot depicting the country distribution for topics is not as 
 
 Let us take this analysis further and study the genre distribution in each topic across the years.
 
-<h5><strong>Topic occurrence in 1995-2005, grouped by genre</strong></h5>
+<h4><strong>Topic occurrence in 1995-2005, grouped by genre</strong></h4>
 <img src="/assets/years1.png" width = "350" height = "250" alt="">
 
-<h5><strong>Topic occurrence in 2006-2021, grouped by genre</strong></h5>
+<h4><strong>Topic occurrence in 2006-2021, grouped by genre</strong></h4>
 <img src="/assets/years2.png" width = "350" height = "250" alt="">
 
 
