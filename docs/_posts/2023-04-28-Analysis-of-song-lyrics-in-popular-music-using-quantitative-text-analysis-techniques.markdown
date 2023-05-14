@@ -15,6 +15,8 @@ some additional information, such as genre and country where the track was relea
 into a corpus, treating the lyrics of each song as a separate document, and created a DFM and a tokens object for the respective functions that only accept data in this 
 format. To analyse the lyrics, I implemented topic modelling and keyness analysis. Below I present the code for each step of my project.
 
+_Note: racial slurs in plots were blurred out._
+
 First, load the necessary packages.
 
 {% highlight ruby %}
@@ -81,7 +83,6 @@ corpus_df <- drop_na(corpus_df)
 corpus_df$date <- as.Date(corpus_df$date, origin = lubridate::origin)
 {% endhighlight %}
 
-
 Downloading data from the Discogs.com database:
 
 {% highlight ruby %}
@@ -129,5 +130,58 @@ for (i in 1:nrow(corpus_df)){
 write.csv(corpus_df, file='.../df_genre_country.csv')
 {% endhighlight %}
 
-The original dataset contains charts published from 1959 until 2021, however due to time and API requests limits the dataset I used for this project only contains data 
-from 1995-2021. Overall, it has 60400 observations. 
+The original dataset contains charts published from 1959 until 2021, however due to time and API requests limits the dataset I used for this project only contains data from 1995-2021. Overall, it has 60400 observations. The chunk of code below removes rows with missing information and columns that are not going to be used and creates objects that we will use further (corpus, tokens object, and DFM).
+
+{% highlight ruby %}
+corpus_df <- read_csv('/.../df_genre_country.csv', 
+                      show_col_types = FALSE)
+
+#remove rows where country and genre were not retrieved
+corpus_df <- corpus_df %>%
+  filter(genre != 0) %>%
+  select(-1) #remove the first columns with indices
+
+#create a corpus object out of our dataset
+billboard_corp <- corpus(corpus_df, text_field = "lyrics")
+
+#set the names of songs as names of documents
+docnames(billboard_corp) <- corpus_df$names
+
+#create a tokens object
+toks <- tokens(billboard_corp,
+               remove_punct = TRUE,
+               remove_numbers = TRUE,
+               remove_url = TRUE,
+               remove_symbols = TRUE,
+               remove_separators = TRUE) %>%
+  tokens_remove(stopwords("en")) 
+
+#create a DFM object as well
+b_dfm <- toks %>% 
+  dfm(tolower = TRUE) 
+{% endhighlight %}
+
+<h3>Topic Modelling</h3>
+
+Now we proceed to topic modelling. To be specific, I will be implementing structural topic models for K from 2 to 10,
+where K is the number of topics. For each of those metrics of semantic coherence, exclusivity, and others will be calculated, based on
+which I will select an optimal value of K and use the corresponding model for further analysis.
+
+{% highlight ruby %}
+#convert into an input for a structural topic model
+stm_input <- convert(b_dfm, to = "stm")
+
+#perform a search over K values
+k_search_output <- searchK(stm_input$documents, stm_input$vocab,
+                           K = c(2, 3, 4, 5, 6, 7, 8, 9, 10), 
+                           data = stm_input$meta,
+                           verbose = FALSE, heldout.seed = 42)
+
+plot(k_search_output)
+print(k_search_output)
+{% endhighlight %}
+
+<h4>Results of K search</h4>
+<img src="/assets/ksearch.png" alt="">
+
+
