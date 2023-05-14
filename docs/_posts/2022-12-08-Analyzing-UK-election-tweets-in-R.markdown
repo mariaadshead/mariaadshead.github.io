@@ -199,13 +199,13 @@ hashtag_network('nhs')
 hashtag_network('tories')
 {% endhighlight %}
 
-<h4>__Network for hashtag "brexit"__</h4>
+<h4><strong>Network for hashtag "brexit"</strong></h4>
 <img src="/assets/brexit.png" alt="">
 
-<h4>__Network for hashtag "nhs"__</h4>
+<h4>Network for hashtag "nhs"</h4>
 <img src="/assets/nhs.png" alt="">
 
-<h4>__Network for hashtag "tories"__</h4>
+<h4>Network for hashtag "tories"</h4>
 <img src="/assets/tories.png" alt="">
 
 Finally, we need to disconnect from the database. 
