@@ -181,8 +181,90 @@ plot(k_search_output)
 print(k_search_output)
 {% endhighlight %}
 
-<h5><strong>Results of K search</strong></h5>
-<h5><em>Source: calculations performed in R</em></h5>
-<img src="/assets/ksearch.png" width = "250" height = "170" alt="">
+<h4><strong>Results of K search</strong></h4>
+<img src="/assets/ksearch.png" width = "270" height = "170" alt="">
+
+To choose an optimal value of K, a balance needs to be reached between semantic coherence and exclusivity: both need to be maximized, however as K increases, the two metrics change in opposite directions. As we may see, the highest semantic coherence is achieved for K = 2, while highest exclusivity - for K = 10.
+As for the optimal K, I am inclined to choose between K = 4 and K = 5. Semantic coherence scores of - 50.4547 and -54.92121 are slightly worse than for K = 2, however they are significantly better than for higher values of K. Meanwhile, exclusivity scores of 8.253031 and 8.517537 are a noticeable improvement over the ones for lower values of K. To make the final choice, let us fit models for these values and see for which one the topics make more sense.
+
+<h4><strong>Wordcloud for Topic 1</strong></h4>
+<img src="/assets/ksearch.png" width = "300" height = "200" alt="">
+
+<h4><strong>Wordcloud for Topic 2</strong></h4>
+<img src="/assets/ksearch.png" width = "300" height = "200" alt="">
+
+<h4><strong>Wordcloud for Topic 3</strong></h4>
+<img src="/assets/ksearch.png" width = "300" height = "200" alt="">
+
+<h4><strong>Wordcloud for Topic 4</strong></h4>
+<img src="/assets/ksearch.png" width = "300" height = "200" alt="">
+
+<h4><strong>Wordcloud for Topic 5</strong></h4>
+<img src="/assets/ksearch.png" width = "300" height = "200" alt="">
+
+There is a lot of overlap in topics in both models, however it seems that the identified topics in the model with K = 5 make slightly more sense, so I decided to stick with it. I believe the topics could be characterized as follows:
+
+1. slang, curses and slurs (most likely rap/hip-hop lyrics)
+2. “romantic non-light-hearted”/emotional lyrics
+3. dancing-related lyrics
+4. “romantic light-hearted” lyrics
+5. rather difficult to identify a common theme, however the presence of the words like “ride”, “town”, “car”, etc. indicates that this topic probably relates to country music lyrics or has something to do with travelling
+   
+It appears that topics 1, 3, and 4 feature more simplistic language than topics 2 and 5, however more complex analysis is needed to confirm this. Overall, it seems that some of the topics were formed based on typical lyrics in different music genres rather than actual topics in the common sense of the word.
+
+Now we are going to look at the topic distribution across genres and countries.
+
+{% highlight ruby %}
+lyrics_topics <- findThoughts(topic_model_2,
+                                 texts = corpus_df$lyrics,
+                                 n = 1000)$index
+
+#initialize the data frame
+topics_df <- corpus_df[unlist(lyrics_topics[1]),]
+topics_df$topic <- 1
+
+#select the most likely songs for each topic and bind them into one dataframe
+for (i in 2:length(lyrics_topics)){
+  df <- corpus_df[unlist(lyrics_topics[i]),]
+  df$topic <- i
+  topics_df <- rbind(topics_df, df)
+}
+
+#bar chart showing the relationship between topic and genre
+plot_genre <- ggplot(topics_df, 
+       aes(x = topic, 
+           fill = genre)) + 
+  geom_bar(position = "stack") +
+  ggtitle("Share of music genres in each topic")
+
+#bar chart showing the relationship between topic and country
+plot_country <- ggplot(topics_df, 
+       aes(x = topic, 
+           fill = country)) + 
+  geom_bar(position = "stack") +
+  ggtitle("Share of countries in each topic")
+{% endhighlight %}
+
+<h4><strong>Share of music genres in each topic</strong></h4>
+<img src="/assets/topics_genres.png" width = "300" height = "200" alt="">
+
+<h4><strong>Share of countries in each topic</strong></h4>
+<img src="/assets/topics_countries.png" width = "300" height = "200" alt="">
+
+Let us analyze the plots shown above.
+
+As for the genre plot, we can clearly see that the most common genre for Topic 1 is hip-hop. I have briefly noted above that most likely the words encountered in the wordcloud for this topic relate to this genre of music, which turned out to be correct. Another important thing to note that in Topic 1 hip-hop occupies a noticeably larger share than in others. Hip-hop also occupied substantial shares in Topic 3 and 4 (dance-related lyrics and romantic light-hearted lyrics).
+Meanwhile, Topic 2 is predominantly rock music, which has a small share in most topics. It also has a substantial, but a much smaller share in Topic 5 (ambiguous, possibly travel-related lyrics).
+
+The other three topics do not have a highly dominant music genre as in the previous two. However, in Topic 3 the most common one is electronic, in Topic 4 it is funk/soul and hip-hop (electronic has a substantial share too), and in Topic 5 it is folk/world/country (with rock having a relatively big share too). Overall, the findings above make sense and confirm some of the guesses made above. To elaborate, we would anticipate that electronic music has dance-related lyrics (Topic 3), funk and hip-hop may have “light-hearted” romantic lyrics (Topic 4), and as was hypothesized, Topic 5 mostly relates to folk/country music.
+Unfortunately, the plot depicting the country distribution for topics is not as insightful. In most of the topics the biggest share is occupied by the US, which is not surprising since the chart originates from this country. However, probably the interesting thing to note here is that the US occupies the largest shares in Topics 1 and 5, meaning that either hip-hop and country mostly originate from the US, or that people in the US prefer listening to music originating from their own country in these genres. Perhaps, the first is more likely to be the case for country, and how hip-hop it is either the second or a mix of both. Meanwhile, the US occupies the smallest share in Topic 3 which is mostly electronic music; perhaps, this is explained by the fact that a lot of popular electronic music originates from Europe.
+
+Let us take this analysis further and study the genre distribution in each topic across the years.
+
+<h4><strong>Topic occurrence in 1995-2005, grouped by genre</strong></h4>
+<img src="/assets/years1.png" width = "300" height = "200" alt="">
+
+<h4><strong>Topic occurrence in 2006-2021, grouped by genre</strong></h4>
+<img src="/assets/years2.png" width = "300" height = "200" alt="">
 
 
