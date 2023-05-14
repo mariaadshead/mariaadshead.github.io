@@ -202,10 +202,10 @@ hashtag_network('tories')
 <h4><strong>Network for hashtag "brexit"</strong></h4>
 <img src="/assets/brexit.png" alt="">
 
-<h4>Network for hashtag "nhs"</h4>
+<h4><strong>Network for hashtag "nhs"</strong></h4>
 <img src="/assets/nhs.png" alt="">
 
-<h4>Network for hashtag "tories"</h4>
+<h4><strong>Network for hashtag "tories"</strong></h4>
 <img src="/assets/tories.png" alt="">
 
 Finally, we need to disconnect from the database. 
