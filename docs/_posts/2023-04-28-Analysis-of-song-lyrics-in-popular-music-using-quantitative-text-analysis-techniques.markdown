@@ -181,7 +181,8 @@ plot(k_search_output)
 print(k_search_output)
 {% endhighlight %}
 
-<h4>Results of K search</h4>
-<img src="/assets/ksearch.png" alt="">
+<h5><strong>Results of K search</strong></h5>
+<h5><em>Source: calculations performed in R</em></h5>
+<img src="/assets/ksearch.png" width = "200" height = "150" alt="">
 
 
