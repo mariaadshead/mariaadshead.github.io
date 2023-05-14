@@ -183,6 +183,6 @@ print(k_search_output)
 
 <h5><strong>Results of K search</strong></h5>
 <h5><em>Source: calculations performed in R</em></h5>
-<img src="/assets/ksearch.png" width = "200" height = "150" alt="">
+<img src="/assets/ksearch.png" width = "250" height = "170" alt="">
 
 
