@@ -5,9 +5,6 @@ date: 2023-04-28 12:00:00 -0000
 font: "Permanent Marker"
 categories: R API music quanteda
 ---
-{% highlight ruby %}
-
-{% endhighlight %}
 
 This is a project that I did as my final assignment for the Quantitative Text Analysis graduate course. My primary source of data was the full history of 
 Billboard Hot 100 published weekly, which I retrieved from Kaggle. I then downloaded the lyrics for the songs from the chart using the API of Genius, and gathered 
