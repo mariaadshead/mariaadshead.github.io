@@ -2,7 +2,6 @@
 layout: post
 title: "Dissertation: Predicting the ideological position of Reddit users"
 date: 2023-08-18 12:00:00 -0000
-categories: Python R web-scraping text analysis quanteda
 ---
 In this post I present my dissertation, or the Capstone project completed as the final work of the MSc Applied 
 Social Data Science program. In this project, I used data from various Reddit communities that I scraped myself using
