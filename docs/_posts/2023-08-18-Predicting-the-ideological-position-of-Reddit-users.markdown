@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Dissertation: Predicting the ideological position of Reddit users"
+title: "Dissertation: Predicting the ideological position of Reddit users using machine learning models"
 date: 2023-08-18 12:00:00 -0000
 ---
 In this post I present my dissertation, or the Capstone project completed as the final work of the MSc Applied 
